@@ -1,0 +1,32 @@
+server:
+  port: 8130
+spring:
+  application:
+    name: service-oss
+  profiles:
+    active: dev
+  redis:
+    database: 0
+    port: 6379
+    host: 8.140.6.169
+    timeout: 5000
+    lettuce:
+      pool:
+        max-active: 20
+        max-idle: 5
+        min-idle: 0
+        max-wait: -1 #阻塞式等待不限制等待时间
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.140.6.169:8848
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 8.140.6.169:8080
+aliyun:
+  oss:
+    end-point: oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5tN6mTj3D3rjty5zcr29
+    access-key-secret: MpCmNH5VNHUv0H2j4X63H8ibKvJzEQ
+    bucketName: xxxr-oss

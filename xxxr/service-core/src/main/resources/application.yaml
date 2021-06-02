@@ -1,0 +1,43 @@
+server:
+  port: 8110 #端口号
+spring:
+  application:
+    name: service-core #服务名称
+  profiles:
+    active: dev #环境设置:开发环境
+  #配置数据源
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://8.140.6.169:3306/XinXinXiangRong?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: 3701251997Zxj
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 8.140.6.169
+    port: 6379
+    database: 0
+    timeout: 3000
+    #    配置连接池
+    lettuce:
+      pool:
+        max-active: 20 #最大连接数
+        max-wait: -1ms #阻塞时最大等待时间，负数表示没有时间限制
+        max-idle: 8 #最大空闲连接
+        min-idle: 0 #最小空闲连接
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.140.6.169:8848
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 8.140.6.169:8080
+
+mybatis-plus:
+  mapper-locations: classpath:com/xxxr/core/boot/mapper/xml/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-not-delete-value: 0
+      logic-delete-value: 1
